@@ -8,8 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/185656999b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block css %}
     {% endblock %}
@@ -18,88 +17,97 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="{% url 'home' %}">Eco Era</a>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Disabled</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                My Account
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                <li><a class="dropdown-item" href="#">Product Management</a></li>
-                                {% endif %}
-                                <li><a class="dropdown-item" href="#">My Profile</a></li>
-                                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a></li>
-                                {% else %}
-                                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a></li>
-                                <li><a class="dropdown-item" href="{% url 'account_login' %}">Log In</a></li>
-                                {% endif %}
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex input-group-append" method="GET" action="">
-                        <input class="form-control me-2" type="search" placeholder="Search our site"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit"><span><i
-                                    class="fas fa-search"></i></span>Search</button>
-                    </form>
-                    <li class="list-inline-item">
-                        <a class="{% if grand_total %} font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
-                            <div class="text-center">
-                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                                <p class="my-0">
+        <!--Navigation bar upper row-->
+        <nav class="nav-extended">
+            <div class="nav-wrapper">
+                <!--Logo Center-->
+                <a href="{% url 'home' %}" class="brand-logo center">
+                    <img class="logo-navbar" src="media/img/logo-s.png" alt="Logo of Eco Era">
+                </a>
+                <!--My Account dropdown trigger left-->
+                <ul id="nav-mobile" class="left">
+                    <li><a class="dropdown-trigger" href='#' data-target="dropdown1">
+                            <span class="nav-text">My Account ▼</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Dropdown Structure -->
+                <ul id="dropdown1" class="dropdown-content">
+                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                    <li><a class="dropdown-item" href="#">Product Management</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" href="#">My Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a></li>
+                    {% else %}
+                    <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_login' %}">Log In</a></li>
+                    {% endif %}
+                </ul>
+                <!--Shopping basket right-->
+                <ul id="nav-mobile" class="right">
+                    <li><a class="{% if grand_total %} {% else %}{% endif %}" href=""><i class="fas fa-shopping-cart fa-lg"></i>
+                            <span class="nav-text">
+                                    {% if grand_total %}
+                                        €{{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                        €0.00
+                                    {% endif %}
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-content">
+                <ul class="tabs tabs-transparent">
+                    <li class="tab"><a href="#test1">Test 1</a></li>
+                    <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+                    <li class="tab"><a href="#test3">Disabled Tab</a></li>
+                    <li class="tab"><a href="#test4">Test 4</a></li>
+                </ul>
+            </div>
+        </nav>
+    
+        <ul class="sidenav" id="mobile-demo">
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown-account">My Account<i class="fas fa-angle-double-down"></i></a></li>
+                    <li><a class="{% if grand_total %} {% else %}{% endif %}" href=""><i class="fas fa-shopping-bag fa-lg"></i>
+                                <p>
                                     {% if grand_total %}
                                         €{{ grand_total|floatformat:2 }}
                                     {% else %}
                                         €0.00
                                     {% endif %}
                                 </p>
-                            </div>
                         </a>
                     </li>
-                </div>
-            </div>
-        </nav>
+        </ul>
+    
+        <div id="test1" class="col s12">Test 1</div>
+        <div id="test2" class="col s12">Test 2</div>
+        <div id="test3" class="col s12">Test 3</div>
+        <div id="test4" class="col s12">Test 4</div>
     </header>
-
- {% if messages %}
-        <div>
-
-        </div>
+    
+    {% if messages %}
+    <div>
+    
+    </div>
     {% endif %}
-
+    
     {% block header %}
     {% endblock %}
-
+    
     {% block content %}
     {% endblock %}
-
+    
     <footer>
-
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script src="{% static 'js/materialize.js' %}"></script>
     {% block js %}
     {% endblock %}
-
     
-  </body>
-</html>
+    
+    </body>
+    
+    </html>

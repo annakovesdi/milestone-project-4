@@ -2,8 +2,39 @@ html {
     height: 100%;
 }
 
-
 body {
-    background-color: aquamarine;
     height: calc(100vh - 100px);
+    color: black;
 }
+
+i {
+    color: black;
+}
+
+/* --------------------Navbar*/
+
+.nav-extended {
+    background-color: azure;
+}
+
+.nav-wrapper {
+    padding: 10px 10px 0px 10px;
+}
+
+img.logo-navbar {
+    max-height: 50px;
+}
+
+.nav-text {
+    color: black;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.dropdown-content{
+   width: max-content !important;
+   height:auto !important;
+}
+
+
+
