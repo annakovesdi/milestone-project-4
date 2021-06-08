@@ -26,7 +26,7 @@
                 </a>
                 <!--My Account dropdown trigger left-->
                 <ul id="nav-mobile" class="left">
-                    <li><a class="dropdown-trigger" href='#' data-target="dropdown1">
+                    <li><a class="dropdown-trigger btn" href='#' data-target="dropdown1">
                             <span class="nav-text">My Account ▼</span>
                         </a>
                     </li>
@@ -46,46 +46,33 @@
                 </ul>
                 <!--Shopping basket right-->
                 <ul id="nav-mobile" class="right">
-                    <li><a class="{% if grand_total %} {% else %}{% endif %}" href=""><i class="fas fa-shopping-cart fa-lg"></i>
-                            <span class="nav-text">
-                                    {% if grand_total %}
+                    <li><a class="{% if grand_total %} {% else %}{% endif %} btn" href="#">
+                        <div class="shopping-basket-button-content">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
+                            <span class="nav-text">{% if grand_total %}
                                         €{{ grand_total|floatformat:2 }}
                                     {% else %}
                                         €0.00
                                     {% endif %}
                             </span>
+                            </div>
                         </a>
                     </li>
                 </ul>
-            </div>
             <div class="nav-content">
-                <ul class="tabs tabs-transparent">
-                    <li class="tab"><a href="#test1">Test 1</a></li>
-                    <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-                    <li class="tab"><a href="#test3">Disabled Tab</a></li>
-                    <li class="tab"><a href="#test4">Test 4</a></li>
+                <ul>
+                    <li class="btn"><a href="#">Washable wipes</a></li>
+                    <li class="btn"><a href="#">Washable cotton pads</a></li>
+                    <li class="btn"><a href="#">Washable nursing pads</a></li>
+                    <li class="btn"><a href="#">Washable sanitary pads</a></li>
+                    <li class="btn"><a href="#">Blankets</a></li>
+                    <li class="btn"><a href="#">How to use?</a></li>
+                    <li class="btn"><a href="#">Information</a></li>
+                    <li class="btn"><a href="#">Giftcard</a></li>
                 </ul>
             </div>
+             </div>
         </nav>
-    
-        <ul class="sidenav" id="mobile-demo">
-            <li><a class="dropdown-trigger" href="#!" data-target="dropdown-account">My Account<i class="fas fa-angle-double-down"></i></a></li>
-                    <li><a class="{% if grand_total %} {% else %}{% endif %}" href=""><i class="fas fa-shopping-bag fa-lg"></i>
-                                <p>
-                                    {% if grand_total %}
-                                        €{{ grand_total|floatformat:2 }}
-                                    {% else %}
-                                        €0.00
-                                    {% endif %}
-                                </p>
-                        </a>
-                    </li>
-        </ul>
-    
-        <div id="test1" class="col s12">Test 1</div>
-        <div id="test2" class="col s12">Test 2</div>
-        <div id="test3" class="col s12">Test 3</div>
-        <div id="test4" class="col s12">Test 4</div>
     </header>
     
     {% if messages %}
@@ -101,8 +88,9 @@
     {% endblock %}
     
     <footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{% static 'js/materialize.js' %}"></script>
     {% block js %}
     {% endblock %}

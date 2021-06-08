@@ -14,7 +14,7 @@ i {
 /* --------------------Navbar*/
 
 .nav-extended {
-    background-color: azure;
+    background-color: lightseagreen;
 }
 
 .nav-wrapper {
@@ -32,8 +32,11 @@ img.logo-navbar {
 }
 
 .dropdown-content{
-   width: max-content !important;
-   height:auto !important;
+   margin-top: 40px;
+}
+
+.shopping-basket-button-content {
+    margin-top: -12px;
 }
 
 

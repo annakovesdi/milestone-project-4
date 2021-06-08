@@ -1,6 +1,12 @@
 $(document).ready(function(){
     $('.modal').modal();
-    $('.dropdown-trigger').dropdown(open(hover=true));
+    $('.trigger-modal').modal();
+    $('.dropdown-trigger').dropdown({
+        inDuration: 600,
+        outDuration: 600,
+        coverTrigger: false,
+    });
     $('.collapsible').collapsible();
-    $('.tabs').tabs();
   });
+
+  M.Tabs.init(document.querySelector('.tabs'))
